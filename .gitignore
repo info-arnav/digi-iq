@@ -134,3 +134,7 @@ dist
 
 # env files
 .env
+
+# Mac FIles
+.DS_store
+*/.DS_Store
