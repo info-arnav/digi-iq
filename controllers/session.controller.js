@@ -1,16 +1,17 @@
 const db = require("../models");
 const generator = require("./components/generator");
 const Session = db.sessions;
-const { fn, col, where, Op } = db.Sequelize;
+const { col, where, Op } = db.Sequelize;
 
-exports.create = async (email, fingerprint) => {
-  if (!email || !fingerprint) {
-    return { error: true, message: "Email and Fingerprint are required" };
+exports.create = async (email, fingerprint, user_id) => {
+  if (!email || !fingerprint || !user_id) {
+    return { error: true, message: "Credentials are required" };
   }
 
   const session = {
     email: email,
     fingerprint: fingerprint,
+    user_id: user_id,
   };
 
   const data = await generator(Session, session);
@@ -66,7 +67,12 @@ exports.validateAccessToken = async (access_token, fingerprint) => {
       } else if (data.access_token_expires_at < new Date()) {
         return { error: false, exists: true, expired: true };
       }
-      return { error: false, exists: true, expired: false, user_id: data.id };
+      return {
+        error: false,
+        exists: true,
+        expired: false,
+        user_id: data.user_id,
+      };
     })
     .catch((err) => {
       return {
@@ -105,7 +111,7 @@ exports.updateAccessToken = async (refresh_token, fingerprint) => {
         return deleteData;
       }
 
-      return this.create(data.email, fingerprint);
+      return this.create(data.email, fingerprint, data.user_id);
     })
     .catch((err) => {
       return {

@@ -5,6 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 // const apiRoutes = require("./routes/api");
 const authRoutes = require("./routes/auth");
+const fileRoutes = require("./routes/file");
 const fs = require("fs");
 const path = require("path");
 
@@ -35,6 +36,7 @@ db.sequelize
 // Routes
 // app.use("/api", apiRoutes);
 app.use("/auth", authRoutes);
+app.use("/file", fileRoutes);
 
 // Error handlers
 app.use(function fourOhFourHandler(req, res) {

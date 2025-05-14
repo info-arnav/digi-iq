@@ -26,5 +26,6 @@ db.transactions = require("./payment/transaction.model.js")(
   sequelize,
   Sequelize
 );
+db.files = require("./file/file.model.js")(sequelize, Sequelize);
 
 module.exports = db;

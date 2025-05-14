@@ -63,7 +63,11 @@ router.post("/", async (req, res) => {
     return res.status(500).json(otpResponse);
   }
 
-  const sessionData = await sessions.create(email, fingerprint);
+  const sessionData = await sessions.create(
+    email,
+    fingerprint,
+    userResponse.data.id
+  );
 
   return res.status(sessionData.error ? 500 : 200).json(sessionData);
 });

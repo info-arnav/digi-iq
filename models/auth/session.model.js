@@ -12,6 +12,10 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         validate: { isEmail: true },
       },
+      user_id: {
+        type: Sequelize.UUID,
+        allowNull: false,
+      },
       refresh_token: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
