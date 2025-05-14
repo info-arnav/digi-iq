@@ -7,6 +7,13 @@ const videoReq = require("./videoReq");
 const lipSyncReq = require("./lipSyncReq");
 const checkStatus = require("./checkStatus");
 
+/**
+ * access-token
+ * image / video / audio / mutiple
+ * prompt
+ * model
+ * create-date
+ */
 router.use("/test", testRoute);
 router.use("/image-req", imageReq);
 router.use("/lip-sync-req", lipSyncReq);
