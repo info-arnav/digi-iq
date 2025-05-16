@@ -18,10 +18,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
       },
       files: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
       },
-      user: {
-        type: Sequelize.STRING,
+      user_id: {
+        type: Sequelize.UUID,
+        allowNull: true,
       },
     },
     { timestamps: true }

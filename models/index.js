@@ -27,5 +27,6 @@ db.transactions = require("./payment/transaction.model.js")(
   Sequelize
 );
 db.files = require("./file/file.model.js")(sequelize, Sequelize);
+db.chunks = require("./file/chunk.model.js")(sequelize, Sequelize);
 
 module.exports = db;

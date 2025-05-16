@@ -47,7 +47,11 @@ router.post("/", async (req, res) => {
     });
   }
 
-  const sessionData = await sessions.create(email, fingerprint, data.data.id);
+  const sessionData = await sessions.create(
+    email,
+    fingerprint,
+    data.data.user_id
+  );
 
   return res.status(sessionData.error ? 500 : 200).json(sessionData);
 });

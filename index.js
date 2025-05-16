@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-// const apiRoutes = require("./routes/api");
+const apiRoutes = require("./routes/api");
 const authRoutes = require("./routes/auth");
 const fileRoutes = require("./routes/file");
 const fs = require("fs");
@@ -34,7 +34,7 @@ db.sequelize
   });
 
 // Routes
-// app.use("/api", apiRoutes);
+app.use("/api", apiRoutes);
 app.use("/auth", authRoutes);
 app.use("/file", fileRoutes);
 

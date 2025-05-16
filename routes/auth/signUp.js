@@ -66,7 +66,7 @@ router.post("/", async (req, res) => {
   const sessionData = await sessions.create(
     email,
     fingerprint,
-    userResponse.data.id
+    userResponse.data.user_id
   );
 
   return res.status(sessionData.error ? 500 : 200).json(sessionData);
